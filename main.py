@@ -1,5 +1,6 @@
 import webapp2
 import caesar
+import cgi
 
 def build_page(textarea_content):
     rot_label = "<label>Rotation number: </label>"
@@ -12,12 +13,13 @@ def build_page(textarea_content):
             + msg_label + textarea +
             "<br>" + submit + "</form>")
     header = "<h2>Web caesar</h2>"
-
     return header + form
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+        
         content = build_page("")
-        self.response.write(header + form)
+        self.response.write(content)
 
     def post(self):
         message = self.request.get("message")
